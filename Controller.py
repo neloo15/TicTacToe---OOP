@@ -2,12 +2,14 @@ from Model import *
 from View import *
 import json
 
+
 class Controller:
     """Processes user input and applies it to the view and/or model"""
 
     def __init__(self):
         self.model = Model()
         self.view = View(Model())
+        self.call_function_times = 0
 
 
 
@@ -56,56 +58,61 @@ class Controller:
         return self.model.player
 
 
-    def computer():
-        board = self.model.board
+    def computer(self, board):
         bestScore = -1000
         bestMove = 0
         score = None
         for key in board.keys():
+            print(f"current key is {key}")
             if (board[key] == ' '):
                 board[key] = 'O'
+                print(f"current score is {bestScore}")
                 score = self.minimax(False)
+                print(f"minmax score {score}")
+                print(self.model.board)
                 board[key] = ' '
                 if (score > bestScore):
                     bestScore = score
+                    print(f"bestsscore {bestScore}")
                     bestMove = key
+                    print(f"Best move {bestMove}")
         return bestMove
 
     def best_move(self, computer):
         board = self.model.board
         board[computer] = 'O'
 
-    def minimax(self, isMaximizing):
-        board = self.model.board
+    def minimax(self, is_maximizing):
+        print(f"position in calculation {self.model.board}")
+        self.call_function_times = self.call_function_times + 1
+        print(f"call function times {self.call_function_times}")
         score = None
-        if self.model.get_winner() == 'O':
-            score = 1
-            return score
+        if self.model.get_winner()  == 'O':
+            return 1
         elif self.model.get_winner() == 'X':
-            score = -1
-            return score
+            return -1
         elif self.model.is_draw():
-            score = 0
-            return score
-        if isMaximizing:
+            return 0
+        if is_maximizing:
             bestScore = -99
-            for key in board.keys():
-                if (board[key] == ' '):
-                    board[key] = 'O'
+            for key in self.model.board.keys():
+                if (self.model.board[key] == ' '):
+                    self.model.board[key] = 'O'
                     score = self.minimax(False)
-                    board[key] = ' '
+                    self.model.board[key] = ' '
                     if (score > bestScore):
                         bestScore = score
             return bestScore
         else:
             bestScore = 99
-            for key in board.keys():
-                if (board[key] == ' '):
-                    board[key] = 'X'
+            for key in self.model.board.keys():
+                if (self.model.board[key] == ' '):
+                    self.model.board[key] = 'X'
                     score = self.minimax(True)
-                    board[key] = ' '
+                    self.model.board[key] = ' '
                     if (score < bestScore):
                         bestScore = score
+            self.mcall = 0
             return bestScore
 
     def save_game(self):
@@ -133,7 +140,7 @@ class Controller:
         while True:
             self.view.print_board(self.model.board)
             self.save_game()
-            if self.model.get_winner() is not None:
+            if self.model.get_winner() != ' ':
                 print(self.model.get_winner())
                 break
             elif self.model.is_draw():
@@ -146,20 +153,12 @@ class Controller:
         counter = 0
         while True:
             self.view.print_board(self.model.board)
-            if self.model.get_winner() is not None:
-                print(self.model.get_winner())
+            if self.model.get_winner() != ' ':
+                print(f"WInner is {self.model.get_winner()}")
                 break
             if counter % 2 == 0:
                 self.make_move(self.model.board, self.get_move(), self.player())
+                print(self.model.get_winner())
             else:
-                self.make_move(self.model.board, self.computer(), self.player())
+                self.make_move(self.model.board, self.computer(self.model.board), self.player())
             counter += 1
-
-
-
-
-
-
-
-
-
