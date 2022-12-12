@@ -4,7 +4,7 @@ class Model:
 
     def __init__(self):
         self.board = self.new_board()
-        self.winner = None
+        self.winner = ' '
         self.valid_inputs = [1, 2, 3, 4, 5, 6, 7, 8, 9]
         self.player = 'O'
 
@@ -53,12 +53,3 @@ class Model:
             if self.board[key] == ' ':
                 return False
         return True
-
-
-
-
-
-
-
-
-
