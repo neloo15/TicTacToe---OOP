@@ -1,0 +1,95 @@
+
+body{
+  background-image: url(../images/background.png);
+  background-color: #cccccc;  
+  
+}
+::-webkit-scrollbar {
+  display: none;
+}
+#sendBtn {
+  left: -5px;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  border-radius: 0 25px 25px 0;
+  height: 50px;
+  width: 195px;
+  background: #4ECDC4;
+  
+}
+#sendBtn:hover {
+  background: #FF6B6B;
+}
+.center-screen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 80vh;
+  margin-left: 227.5;
+  margin-right: 227.5;
+  border-radius: 100px;
+}
+#msgs{
+  background-image: url(../images/white-concrete-wall.jpg);
+  color: rgb(10, 5, 10);  
+  border-radius: 70px 0px 0px 0px;
+  opacity: 0.85  ;
+  box-shadow: 0 15px 15px 15px black;
+}
+#msg {
+  background-color: abc;
+  width: 600;
+  height: 50px;
+  border: none;
+  outline: none;
+  padding: 0 10px;
+  border: 25px 0 0 25px;
+  text-size-adjust: 20px;
+}
+#users {
+  background-color: #cccccc;
+  opacity: 0.85;
+  background: rgb(2, 0, 36);
+  background: radial-gradient(circle, rgba(2, 0, 36, 1) 0%, rgba(121, 9, 86, 0.4738270308123249) 11%, rgba(0, 212, 255, 0.3897934173669467) 100%);
+  color: white;
+  text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+  font-size: large;
+  cursor: auto
+  
+}
+.lowerPart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  
+  margin-left: 227.5;
+  margin-right: 227.5;
+}
+#chatForm{
+  width: 800;
+}
+input {
+  position: relative;
+  display: inline-block;
+  font-size: 20px;
+  box-sizing: border-box;
+  transition: 0.5s;
+}
+input[type="text"] {
+  position: relative;
+  display: inline-block;
+  font-size: 20px;
+  box-sizing: border-box;
+  transition: 0.5s;
+  border-radius: 0 0 0 25px
+}
+#userMsg {
+  text-align: right;
+  font-size: large;
+}
+#botMsg {
+  text-align: left;
+}
