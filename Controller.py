@@ -161,4 +161,5 @@ class Controller:
                 print(self.model.get_winner())
             else:
                 self.make_move(self.model.board, self.computer(self.model.board), self.player())
+                self.model.winner = ' '
             counter += 1
