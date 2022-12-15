@@ -7,7 +7,7 @@ class Model:
 
     def new_board(self):
         board = {
-            1 : ' ', 2 : ' ', 3 : ' ',
+            1 : 'O', 2 : ' ', 3 : ' ',
             4 : ' ', 5 : ' ', 6 : ' ',
             7 : ' ', 8 : ' ', 9 : ' '
         }
@@ -52,3 +52,29 @@ class Model:
             return True #X is turn
         else:
             return False
+
+    @staticmethod
+    def get_winner2(board):
+        winner = ' '
+        # Rows
+        if board[1] == board[2] == board[3] and board[1] != " ":
+            winner = board[1]
+        elif board[4] == board[5] == board[6] and board[4] != " ":
+            winner = board[4]
+        elif board[7] == board[8] == board[9] and board[7] != " ":
+            winner = board[7]
+
+        # Columns
+        elif board[1] == board[4] == board[7] and board[1] != " ":
+            winner = board[1]
+        elif board[2] == board[5] == board[8] and board[2] != " ":
+            winner = board[2]
+        elif board[3] == board[6] == board[9] and board[3] != " ":
+            winner = board[3]
+
+        # Diagonals
+        elif board[1] == board[5] == board[9] and board[1] != " ":
+            winner = board[5]
+        elif board[3] == board[5] == board[7] and board[3] != " ":
+            winner = board[5]
+        return winner

@@ -40,5 +40,10 @@ class View:
     def exit_game(self):
         print("Enter 'y' to exit: ")
 
+    def print_ai_mode(self):
+        print("AI mode has been started...")
+
+    def print_player_mode(self):
+        print("Player mode has been started...")
 
 
