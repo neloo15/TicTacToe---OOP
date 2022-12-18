@@ -19,7 +19,7 @@ class View:
         print("Welcome to Tic Tac Toe!")
 
     def print_winner(self):
-        print(f"The {self.model.get_winner()} won the game!")
+        print(f"The {self.model.winner} won the game!")
 
     def print_draw(self):
         print("No winner - it's a draw!")
@@ -45,5 +45,11 @@ class View:
 
     def print_player_mode(self):
         print("Player mode has been started...")
+
+    def print_value_error(self):
+        print("\nPlease, give a valid number: ")
+
+    def print_input_number(self):
+        return "\nPlease, give a spot's position: "
 
 
