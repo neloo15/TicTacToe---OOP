@@ -19,7 +19,7 @@ class Controller:
         self.chosen_position = None
         while self.chosen_position not in self.model.valid_inputs:
             try:
-                self.chosen_position = int(input(self.view.print_value_error()))
+                self.chosen_position = int(input(self.view.print_input_number()))
             except ValueError:
                 self.view.print_value_error()
             except KeyboardInterrupt:
@@ -30,7 +30,7 @@ class Controller:
 
     def make_move(self, board, chosen_position, player):
         while board[chosen_position] != ' ':
-            print(f"Can't make move {chosen_position}, square already taken!") # realize in print view
+            self.view.not_possible(chosen_position)
             chosen_position = self.get_move()
         board[chosen_position] = player
         return board
@@ -88,7 +88,7 @@ class Controller:
             self.view.print_board(self.model.board)
             self.features.save_game()
             if self.get_winner(self.model.board) != ' ':
-                self.view.print_winner()
+                self.view.print_winner(self.model.winner)
                 break
             elif self.is_draw(self.model.board):
                 self.view.print_draw()
@@ -103,11 +103,10 @@ class Controller:
             self.view.print_board(self.model.board)
             self.features.save_game()
             if self.get_winner(self.model.board) != ' ':
-                self.view.print_winner()
+                self.view.print_winner(self.model.winner)
                 break
             if counter % 2 == 0:
                 self.make_move(self.model.board, self.get_move(), self.player())
-                self.view.print_winner()
             else:
                 self.make_move(self.model.board, self.features.computer(self.model.board), self.player())
                 self.model.winner=' '

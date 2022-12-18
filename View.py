@@ -18,14 +18,11 @@ class View:
     def greet(self):
         print("Welcome to Tic Tac Toe!")
 
-    def print_winner(self):
-        print(f"The {self.model.winner} won the game!")
+    def print_winner(self, winner):
+        print(f"The {winner} won the game!")
 
     def print_draw(self):
         print("No winner - it's a draw!")
-
-    def print_is_taken(self):
-        print("That square already taken!")
 
     def choose_mode(self):
         print("We have 2 modes in our game:")
@@ -34,11 +31,8 @@ class View:
     def want_previous_game(self):
         return "Do you want load the previous game? y/n: "
 
-    def not_possible(self):
-        "Can't make move {0}, square already taken!"
-
-    def exit_game(self):
-        print("Enter 'y' to exit: ")
+    def not_possible(self, square):
+        print(f"Can't make move {square}, square already taken!")
 
     def print_ai_mode(self):
         print("AI mode has been started...")

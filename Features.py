@@ -14,7 +14,6 @@ class Features:
             if (board[key] == ' '):
                 board[key] = 'O'
                 score = self.minimax(board, False)
-                print(self.model.board)
                 board[key] = ' '
                 if (score > best_score):
                     best_score = score
